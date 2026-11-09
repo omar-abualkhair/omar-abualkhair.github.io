@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Omar Saad Abu Al-Khair · Data Analyst</title>
+<meta name="description" content="Omar Saad Abu Al-Khair, Data Analyst in Cairo. Power BI, Power Query M, DAX, SQL, Excel and Python. Projects, experience and contact.">
+<meta property="og:title" content="Omar Saad Abu Al-Khair · Data Analyst">
+<meta property="og:description" content="Power BI dashboards that show what to act on first.">
+<meta property="og:image" content="assets/home.jpg">
+<link rel="icon" href="assets/omar.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+/* Layout: one column of report-like sections; numbers set in mono like KPI cards */
+:root{
+  --paper:#f6f5f1; --card:#ffffff; --ink:#14213d; --muted:#5b6475; --line:#dcdfe5;
+  --accent:#b0172b; --accent-soft:#f6e3e5;
+  --f-display:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --f-body:"IBM Plex Sans",system-ui,"Segoe UI",sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root{ --paper:#0f1522; --card:#161e2e; --ink:#e9edf5; --muted:#9aa4b8; --line:#2a3447;
+         --accent:#ef4a5c; --accent-soft:#3a1d24; color-scheme:dark; }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:16.5px;line-height:1.65}
+a{color:inherit}
+a:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:4px}
+img{max-width:100%;display:block}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+
+nav{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:58px}
+nav .brand{font-family:var(--f-display);font-weight:800;text-decoration:none;letter-spacing:.01em}
+nav ul{display:flex;gap:20px;list-style:none;margin:0;padding:0;font-size:14.5px}
+nav ul a{text-decoration:none;color:var(--muted)}
+nav ul a:hover{color:var(--ink)}
+@media (max-width:640px){nav ul{display:none}}
+
+header.hero{padding:64px 0 48px}
+.hero .wrap{display:grid;grid-template-columns:1fr 240px;gap:48px;align-items:center}
+.eyebrow{font-family:var(--f-mono);font-size:13px;color:var(--accent);letter-spacing:.04em;text-transform:uppercase;margin:0 0 10px}
+h1{font-family:var(--f-display);font-weight:800;font-size:clamp(36px,6vw,62px);line-height:1.05;margin:0 0 16px;text-wrap:balance}
+.lede{font-size:clamp(18px,2.2vw,21px);color:var(--muted);max-width:56ch;margin:0 0 26px}
+.lede strong{color:var(--ink);font-weight:600}
+.cta{display:flex;flex-wrap:wrap;gap:10px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border-radius:8px;font-weight:600;font-size:15px;text-decoration:none;border:1.5px solid var(--ink)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+.btn:hover{transform:translateY(-1px)}
+.portrait img{width:100%;height:100%;object-fit:cover}
+.portrait{border-radius:14px;overflow:hidden;border:1px solid var(--line);aspect-ratio:1;background:var(--card)}
+.meta{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:22px;font-size:14px;color:var(--muted)}
+@media (max-width:760px){.hero .wrap{grid-template-columns:1fr}.portrait{width:160px;order:-1}}
+
+section{padding:56px 0;border-top:1px solid var(--line)}
+h2{font-family:var(--f-display);font-weight:800;font-size:clamp(26px,3.4vw,34px);margin:0 0 6px;text-wrap:balance}
+.sub{color:var(--muted);margin:0 0 28px;max-width:62ch}
+
+.about{display:grid;grid-template-columns:1.3fr 1fr;gap:40px}
+.about p{margin:0 0 14px;max-width:62ch}
+.flow{list-style:none;margin:0;padding:0;counter-reset:s;display:grid;gap:8px}
+.flow li{counter-increment:s;display:flex;gap:12px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:9px 12px;font-size:15px}
+.flow li::before{content:counter(s,decimal-leading-zero);font-family:var(--f-mono);font-size:12px;color:var(--accent)}
+@media (max-width:760px){.about{grid-template-columns:1fr}}
+
+.project{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.project-head{padding:28px 28px 8px}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 12px;padding:0;list-style:none}
+.tags li{font-family:var(--f-mono);font-size:12px;padding:2px 9px;border-radius:99px;background:var(--accent-soft);color:var(--accent)}
+.project h3{font-family:var(--f-display);font-weight:800;font-size:clamp(22px,3vw,28px);margin:0 0 8px}
+.project p{margin:0 0 12px;max-width:70ch}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-top:18px}
+.kpi{background:var(--card);padding:16px 20px}
+.kpi b{display:block;font-family:var(--f-mono);font-size:26px;font-weight:500;font-variant-numeric:tabular-nums;color:var(--accent)}
+.kpi span{font-size:13.5px;color:var(--muted)}
+@media (max-width:640px){.kpis{grid-template-columns:repeat(2,1fr)}}
+.project-body{display:grid;grid-template-columns:1fr 1fr;gap:28px;padding:24px 28px 28px}
+.project-body h4{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:0 0 10px}
+.project-body ul{margin:0;padding-left:18px}
+.project-body li{margin-bottom:8px}
+.finding{display:grid;gap:10px}
+.finding div{border-left:3px solid var(--accent);padding:2px 0 2px 12px}
+.finding b{display:block}
+.finding small{color:var(--muted);font-family:var(--f-mono);font-size:12.5px}
+@media (max-width:760px){.project-body{grid-template-columns:1fr}}
+.shots{display:grid;grid-template-columns:2fr 1fr;gap:12px;padding:0 28px 28px}
+.shots figure{margin:0}
+.shots .stack{display:grid;gap:12px}
+.shots img{border-radius:8px;border:1px solid var(--line);width:100%;height:auto}
+.shots a{display:block}
+figcaption{font-size:12.5px;color:var(--muted);margin-top:6px}
+@media (max-width:640px){.shots{grid-template-columns:1fr}}
+.project-links{display:flex;flex-wrap:wrap;gap:10px;padding:0 28px 28px}
+
+.mini{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-top:16px}
+.mini article{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:22px}
+.mini h3{font-family:var(--f-display);font-size:20px;margin:0 0 6px}
+.mini p{margin:0 0 12px;color:var(--muted)}
+.mini code{font-family:var(--f-mono);font-size:13px;background:var(--accent-soft);color:var(--accent);padding:1px 6px;border-radius:4px}
+
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+.skills div{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px}
+.skills h3{font-size:15px;margin:0 0 8px}
+.skills p{margin:0;color:var(--muted);font-size:15px}
+
+.timeline{list-style:none;margin:0;padding:0;display:grid;gap:0}
+.timeline li{display:grid;grid-template-columns:170px 1fr;gap:24px;padding:20px 0;border-bottom:1px solid var(--line)}
+.timeline li:last-child{border-bottom:0}
+.when{font-family:var(--f-mono);font-size:13px;color:var(--muted);padding-top:3px}
+.timeline h3{font-size:17px;margin:0}
+.timeline .org{color:var(--accent);font-weight:600;font-size:15px}
+.timeline p,.timeline ul{margin:8px 0 0;max-width:68ch}
+.timeline ul{padding-left:18px}
+@media (max-width:640px){.timeline li{grid-template-columns:1fr;gap:4px}}
+
+.certs{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:10px;list-style:none;margin:0;padding:0}
+.certs li{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px;display:flex;justify-content:space-between;gap:12px}
+.certs b{display:block;font-size:15px}
+.certs span{color:var(--muted);font-size:14px}
+.certs time{font-family:var(--f-mono);font-size:12.5px;color:var(--muted);white-space:nowrap}
+
+.contact{text-align:left}
+.contact .cta{margin-top:20px}
+footer{padding:28px 0 40px;color:var(--muted);font-size:13.5px;border-top:1px solid var(--line)}
+</style>
+</head>
+<body>
+
+<nav aria-label="Main">
+  <div class="wrap">
+    <a class="brand" href="#top">Omar Saad</a>
+    <ul>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#certifications">Certifications</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <p class="eyebrow">Data Analyst · Cairo, Egypt</p>
+      <h1>Omar Saad Abu Al&#8209;Khair</h1>
+      <p class="lede">I build Power BI dashboards that show <strong>what to act on first</strong>, from raw, messy data to prioritized recommendations.</p>
+      <div class="cta">
+        <a class="btn primary" href="#projects">View projects</a>
+        <a class="btn" href="https://www.linkedin.com/in/omar-abualkhair">LinkedIn</a>
+        <a class="btn" href="https://github.com/omar-abualkhair">GitHub</a>
+      </div>
+      <div class="meta">
+        <span>Power BI · DAX · Power Query M</span>
+        <span>SQL · Excel · Python</span>
+        <span>Open to Data / BI Analyst roles: on-site, hybrid or remote</span>
+      </div>
+    </div>
+    <div class="portrait"><img src="assets/omar.jpg" alt="Portrait of Omar Saad Abu Al-Khair" width="460" height="460"></div>
+  </div>
+</header>
+
+<main>
+<section id="about">
+  <div class="wrap about">
+    <div>
+      <h2>About</h2>
+      <p>I came to data from the business side. I organized the production line at a Nestlé facility, then worked on the sales floor of a clothing store and became responsible for the merchandise on sale. Both jobs taught me that every number on a report is attached to a decision someone has to make.</p>
+      <p>That is how I approach analysis: I start from the question, clean the data until I trust it, and finish with recommendations ranked by priority, not just charts.</p>
+      <p>I am currently a Data Analysis trainee at the <strong>Digital Egypt Pioneers Initiative (DEPI)</strong> and the <strong>National Telecommunication Institute (NTI)</strong>, and I study at Benha University.</p>
+    </div>
+    <div>
+      <p class="eyebrow">How I work</p>
+      <ol class="flow">
+        <li>Data exploration</li>
+        <li>Validation</li>
+        <li>Cleaning (Power Query M)</li>
+        <li>Data model</li>
+        <li>Analysis (DAX)</li>
+        <li>Insights</li>
+        <li>Recommendations</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <h2>Projects</h2>
+    <p class="sub">Every project is on GitHub with its files, cleaning code and documentation.</p>
+
+    <article class="project">
+      <div class="project-head">
+        <ul class="tags"><li>Power BI</li><li>Power Query M</li><li>DAX</li><li>Data modeling</li></ul>
+        <h3>Global Development World Metrics Dashboard</h3>
+        <p><strong>Business case (DEPI):</strong> an international economic research organization needs to compare countries' development levels to support policy and investment decisions.</p>
+        <p>I received 263 rows × 45 columns stored entirely as text, including a European Union aggregate that double-counts its members and 31 uninhabited territories with almost no indicators. I wrote all the cleaning in Power Query M, built an 8-table model and a 9-page report that explains its own findings.</p>
+      </div>
+      <div class="kpis" role="list">
+        <div class="kpi" role="listitem"><b>263 → 231</b><span>rows to clean countries</span></div>
+        <div class="kpi" role="listitem"><b>8</b><span>subject tables in the model</span></div>
+        <div class="kpi" role="listitem"><b>35</b><span>DAX measures</span></div>
+        <div class="kpi" role="listitem"><b>9</b><span>report pages</span></div>
+      </div>
+      <div class="project-body">
+        <div>
+          <h4>What I did</h4>
+          <ul>
+            <li>Typed every column by scanning all its values, and kept missing values as null instead of zero, because zero means "measured as zero" and null means "unknown".</li>
+            <li>Standardized 15 outdated country names and added a Region column for slicing and drill-down.</li>
+            <li>Built insight and recommendation tables inside Power BI: each insight shows evidence that updates with the active filters, and recommendations are ranked by priority.</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Key findings</h4>
+          <div class="finding">
+            <div><b>Averages mislead</b><small>Average GDP 243bn vs median 16.25bn</small></div>
+            <div><b>Most countries run a trade deficit</b><small>154 deficit vs 69 surplus (223 with data)</small></div>
+            <div><b>Energy data is thin</b><small>Oil imports missing for 80.5% of countries</small></div>
+          </div>
+        </div>
+      </div>
+      <div class="shots">
+        <figure><a href="assets/executive.jpg"><img src="assets/executive.jpg" alt="Executive overview page with KPI cards, decomposition tree, map and GDP by country" loading="lazy"></a><figcaption>Executive Overview</figcaption></figure>
+        <div class="stack">
+          <figure><a href="assets/insights.jpg"><img src="assets/insights.jpg" alt="Insights table with dynamic evidence and recommendations" loading="lazy"></a><figcaption>Insights with dynamic evidence</figcaption></figure>
+          <figure><a href="assets/economic.jpg"><img src="assets/economic.jpg" alt="Economic performance page with GDP growth by region" loading="lazy"></a><figcaption>Economic Performance</figcaption></figure>
+        </div>
+      </div>
+      <div class="project-links">
+        <a class="btn primary" href="https://github.com/omar-abualkhair/global-development-dashboard-powerbi">See the project on GitHub</a>
+      </div>
+    </article>
+
+    <article class="project" style="margin-top:20px">
+      <div class="project-head">
+        <ul class="tags"><li>Excel</li><li>Power Query</li><li>Power Pivot</li><li>PivotCharts</li></ul>
+        <h3>Nova Retail: U.S. Sales Performance Dashboard</h3>
+        <p>An interactive Excel dashboard on four years of U.S. retail orders (2014–2017): where sales come from, how much is lost to returns and discounts, and how the business is growing.</p>
+        <p>I cleaned the data in Power Query, related orders, returns, sales reps and shipping costs in the Data Model, and found and fixed a date bug that turned every October shipment into January (287 rows with negative delivery times).</p>
+      </div>
+      <div class="kpis" role="list">
+        <div class="kpi" role="listitem"><b>9,994</b><span>order lines · 793 customers</span></div>
+        <div class="kpi" role="listitem"><b>2.30M</b><span>total sales</span></div>
+        <div class="kpi" role="listitem"><b>12.5%</b><span>profit margin</span></div>
+        <div class="kpi" role="listitem"><b>0–7</b><span>delivery days after the fix</span></div>
+      </div>
+      <div class="project-body">
+        <div>
+          <h4>What I did</h4>
+          <ul>
+            <li>Rebuilt the ship date from a numeric code in M and validated it against the order date for all 9,994 rows.</li>
+            <li>Built a Data Model with measures for customers, orders, profit per customer and profit per order.</li>
+            <li>Designed 7 KPI cards, 8 PivotCharts and slicers for state, sales rep, category and returns.</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Key findings</h4>
+          <div class="finding">
+            <div><b>Heavy discounts destroy profit</b><small>Discounts above 40%: −77% margin vs 29.5% with no discount</small></div>
+            <div><b>Furniture sells but barely profits</b><small>742k sales at a 2.5% margin; Tables lost 17.7k</small></div>
+            <div><b>High sales ≠ high profit</b><small>Texas: 3rd in sales, biggest loss (−25.7k)</small></div>
+          </div>
+        </div>
+      </div>
+      <div class="shots" style="grid-template-columns:1fr">
+        <figure><a href="assets/nova.jpg"><img src="assets/nova.jpg" alt="Nova Retail Excel dashboard with KPI cards, sales by category, region, city, state and year" loading="lazy"></a><figcaption>Excel dashboard with slicers</figcaption></figure>
+      </div>
+      <div class="project-links">
+        <a class="btn primary" href="https://github.com/omar-abualkhair/nova-retail-excel-dashboard">See the project on GitHub</a>
+      </div>
+    </article>
+
+    <div class="mini">
+      <article>
+        <ul class="tags"><li>Power Query M</li><li>Reusable code</li></ul>
+        <h3>Power Query M Cleaning Library</h3>
+        <p>Reusable M functions I paste once as a query named <code>Clean</code> and call in any project: loading CSV files, cleaning text and blanks, detecting types, parsing dates, unpivoting and bucketing.</p>
+        <a class="btn" href="https://github.com/omar-abualkhair/power-query-m-cleaning-library">View on GitHub</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <h2>Skills</h2>
+    <p class="sub">Tools I use across the full workflow, from raw file to recommendation.</p>
+    <div class="skills">
+      <div><h3>Power BI</h3><p>Data modeling, DAX measures, interactive reports, dynamic titles and conditional formatting</p></div>
+      <div><h3>Power Query (M)</h3><p>Scripted cleaning, custom functions, type detection, unpivoting, merges</p></div>
+      <div><h3>SQL</h3><p>Joins, aggregations, filtering and querying relational databases</p></div>
+      <div><h3>Excel</h3><p>PivotTables, Power Query, Power Pivot, dashboards and reporting</p></div>
+      <div><h3>Python</h3><p>Pandas and NumPy for cleaning and exploratory analysis</p></div>
+      <div><h3>Analysis</h3><p>Descriptive statistics, outliers, KPI definition, data storytelling</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <h2>Experience</h2>
+    <p class="sub">Training in data, and real work on the business side.</p>
+    <ol class="timeline">
+      <li>
+        <div class="when">Nov 2026 – Present</div>
+        <div>
+          <h3>Data Analysis Trainee</h3>
+          <div class="org">National Telecommunication Institute (NTI)</div>
+          <p>Statistics, probability and data-driven decision-making with Python, SQL, Excel and Power BI, across the full workflow from cleaning to insights.</p>
+        </div>
+      </li>
+      <li>
+        <div class="when">Jun 2026 – Present</div>
+        <div>
+          <h3>Data Analysis Trainee</h3>
+          <div class="org">Digital Egypt Pioneers Initiative (DEPI)</div>
+          <ul>
+            <li>Built the Global Development World Metrics dashboard, from raw data to prioritized recommendations.</li>
+            <li>Scripted all cleaning in Power Query M on a 263 × 45 text-only dataset (231 countries in the final model).</li>
+          </ul>
+        </div>
+      </li>
+      <li>
+        <div class="when">Nov 2025 – Nov 2026</div>
+        <div>
+          <h3>Salesperson</h3>
+          <div class="org">Clothing Retail Store</div>
+          <p>Started on the sales floor serving customers, then took responsibility for the store's merchandise available for sale.</p>
+        </div>
+      </li>
+      <li>
+        <div class="when">Nov 2022 – Nov 2024</div>
+        <div>
+          <h3>Production Line Organizer</h3>
+          <div class="org">Nestlé</div>
+          <p>Organized product flow on the production line conveyor, keeping the line running in order alongside the production team.</p>
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section id="certifications">
+  <div class="wrap">
+    <h2>Certifications</h2>
+    <p class="sub">Education: Benha University.</p>
+    <ul class="certs">
+      <li><div><b>Database Fundamentals</b><span>Information Technology Institute (ITI), Mahara-Tech</span></div><time>Oct 2026</time></li>
+      <li><div><b>HCIA-AI V4.0 Course</b><span>Huawei ICT Academy Egypt</span></div><time>Oct 2026</time></li>
+      <li><div><b>Introduction to Career Skills in Data Analytics</b><span>LinkedIn Learning</span></div><time>Oct 2026</time></li>
+      <li><div><b>Innovation and Entrepreneurship (45 hours)</b><span>ITIDA &amp; TIEC, Innovate Egypt</span></div><time>Sep 2026</time></li>
+      <li><div><b>Data Fundamentals</b><span>IBM SkillsBuild</span></div><time>Aug 2026</time></li>
+      <li><div><b>AI Literacy</b><span>MCIT with Microsoft</span></div><time>Jun 2026</time></li>
+    </ul>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="wrap">
+    <h2>Let's talk</h2>
+    <p class="sub">I am open to Data Analyst and BI Analyst roles, full-time or internship, in Cairo or remote.</p>
+    <p>Email: <a href="mailto:osaad3535@gmail.com">osaad3535@gmail.com</a></p>
+    <div class="cta">
+      <a class="btn primary" href="https://www.linkedin.com/in/omar-abualkhair">Message me on LinkedIn</a>
+      <a class="btn" href="https://github.com/omar-abualkhair">GitHub</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">© 2026 Omar Saad Abu Al-Khair</div>
+</footer>
+</body>
+</html>
