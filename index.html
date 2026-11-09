@@ -277,7 +277,52 @@ footer{padding:28px 0 40px;color:var(--muted);font-size:13.5px;border-top:1px so
       </div>
     </article>
 
+    <article class="project" style="margin-top:20px">
+      <div class="project-head">
+        <ul class="tags"><li>Power BI</li><li>Power Query</li><li>DAX</li><li>RANKX</li></ul>
+        <h3>HR Analytics Dashboard: Where should HR act first?</h3>
+        <p>HR leaders need one reliable view of workforce size, hiring, satisfaction and sick leave. I cleaned the data in Power Query, built a model around an Employees table, and wrote measures that compare departments fairly (averages per employee, gaps against the company average), ending with recommendations ranked by priority.</p>
+      </div>
+      <div class="kpis" role="list">
+        <div class="kpi" role="listitem"><b>1,000</b><span>employees · 6 departments</span></div>
+        <div class="kpi" role="listitem"><b>5.06</b><span>Engineering satisfaction vs 5.50 average</span></div>
+        <div class="kpi" role="listitem"><b>7.4–7.8</b><span>sick days per employee, all departments</span></div>
+        <div class="kpi" role="listitem"><b>7</b><span>report pages</span></div>
+      </div>
+      <div class="project-body">
+        <div>
+          <h4>What I did</h4>
+          <ul>
+            <li>Removed duplicates, verified a unique EmployeeID and standardized phone numbers.</li>
+            <li>Wrote Satisfaction vs Company Avg, Avg Sick Days per Employee, Hires YoY Growth % and RANKX rankings.</li>
+            <li>Separated facts from assumptions: flagged that 2024 may be a partial year before calling the hiring drop real.</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Key findings</h4>
+          <div class="finding">
+            <div><b>Investigate Engineering first</b><small>Lowest satisfaction and one of the largest teams (179)</small></div>
+            <div><b>Sick leave is not a problem</b><small>Similar in every department: no policy change needed</small></div>
+            <div><b>Hiring peaked around 2020</b><small>About 125 hires in 2020 vs 44 in 2024 (2024 may be partial)</small></div>
+          </div>
+        </div>
+      </div>
+      <div class="shots" style="grid-template-columns:1fr 1fr">
+        <figure><a href="assets/hr-overview.jpg"><img src="assets/hr-overview.jpg" alt="HR Overview page with headcount by job title and hires by source" loading="lazy"></a><figcaption>HR Overview</figcaption></figure>
+        <figure><a href="assets/hr-department.jpg"><img src="assets/hr-department.jpg" alt="Department Analysis page with satisfaction and sick days by department" loading="lazy"></a><figcaption>Department Analysis</figcaption></figure>
+      </div>
+      <div class="project-links">
+        <a class="btn primary" href="https://github.com/omar-abualkhair/hr-analytics-powerbi">See the project on GitHub</a>
+      </div>
+    </article>
+
     <div class="mini">
+      <article>
+        <ul class="tags"><li>Power BI</li><li>DAX</li><li>Field parameters</li></ul>
+        <h3>EduLearn: Online Course Performance</h3>
+        <p>Star-schema model of 3,997 enrollments across 30 courses and 14 instructors. Net revenue against a monthly target, a completion rate that only counts enrollments older than 120 days, and instructors flagged when both completion and rating are weak.</p>
+        <a class="btn" href="https://github.com/omar-abualkhair/edulearn-course-analytics-powerbi">View on GitHub</a>
+      </article>
       <article>
         <ul class="tags"><li>Power Query M</li><li>Reusable code</li></ul>
         <h3>Power Query M Cleaning Library</h3>
